@@ -1,0 +1,169 @@
+/********变量*************
+@nice-blue: blue;
+@light-blue:@nice-blue + #111111;
+
+#header{
+    color:@light-blue;
+}
+
+@color1:red;
+@color2:"color1";
+.color{
+    color:@@color2;
+}
+
+/**********混合***********
+.bordered() {
+    border-top: 1px dotted black;
+    border-bottom: 2px solid red;
+  }
+  #meau p {
+    color: red;
+    .bordered;
+  }
+
+/***************带参数混合*******
+.border-radius(@radius: 5px){
+    border-radius:@radius;
+    -moz-border-radius:@radius;
+}
+
+.box{
+    .border-radius(6px);
+}
+
+/************
+.box-shadow(@x:1px, @y:2px, @blur:2px, @color: red){
+    box-shadow: @arguments;
+    -webkit-box-shadow: @arguments;
+    -moz-box-shadow:@arguments;
+}
+
+.box-shadow{
+    .box-shadow(2px, 1px, 4px, green);
+}
+
+/**************模式匹配***************
+.mixin(1a, @color:blue){
+    color:darken(@color, 10%);
+}
+.mixin(light, @color:blue){
+    color:lighten(@color, 20%);
+}
+.mixin(@_, @color:blue){
+    display:block;
+}
+@swich:dark;
+
+.color{
+    .mixin(1a,red);
+}
+
+/**************导引混合****************
+.var1(@a){
+    color:#ffffff-@a;
+}
+
+.var1(@a){
+    background-color:@a;
+}
+
+body{
+    .var1(rgb(38, 0, 255));
+}
+
+
+.var2(@color:red){
+    background-color:spin(@color, 160);
+}
+
+body{
+    .var2;
+}
+
+*****************以上为学习less**********************/
+body {
+  padding: 0;
+  margin: 0;
+}
+#outermost {
+  width: 892px;
+  height: 1384px;
+  margin: 0 auto;
+  padding: 1px 44px;
+  box-shadow: 0 0 6px #eedaba;
+  -moz-box-shadow: 0 0 6px #eedaba;
+  -ms-box-shadow: 0 0 6px #eedaba;
+  -o-box-shadow: 0 0 6px #eedaba;
+  -webkit-box-shadow: 0 0 6px #eedaba;
+}
+/**********************头部***********************/
+header {
+  width: 892px;
+  height: 61px;
+  background: rgba(255, 165, 0, 0.06);
+  border-bottom: rgba(0, 90, 255, 0.2) 2px solid;
+}
+header #tt {
+  background: rgba(255, 123, 0, 0.7);
+  width: 70px;
+  height: 26px;
+  padding: 35px 10px 0 10px;
+  margin: 0;
+  float: left;
+  color: white;
+}
+header p {
+  display: inline;
+  font-size: 12px;
+  line-height: 12px;
+}
+header #time {
+  background: rgba(255, 123, 0, 0.7);
+  width: 70px;
+  height: 26px;
+  padding: 35px 10px 0 10px;
+  margin: 0;
+  float: left;
+  color: white;
+  float: right;
+  background: transparent;
+  color: orange;
+  padding: 35px 0 0 10px;
+  text-align: right;
+}
+/**************************身体****************************/
+#bd {
+  margin: 25px 0 25px 0;
+}
+/***************bd top*******************/
+#bd-top {
+  margin-bottom: 30px;
+  width: 892px;
+}
+#top-ct-img {
+  width: 641px;
+  height: 301px;
+  position: relative;
+}
+#top-ct-img #top-ct-Lspan {
+  background: rgba(0, 0, 255, 0.2);
+  width: 191px;
+  height: 301px;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#top-ct-img #top-ct-Rspan {
+  background: rgba(0, 0, 255, 0.2);
+  width: 191px;
+  height: 301px;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  left: auto;
+  right: 0;
+  background: rgba(0, 41, 102, 0.2);
+}

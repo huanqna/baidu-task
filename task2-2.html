@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>IFE JavaScript Task 01</title>
+  </head>
+<body>
+
+  <h3>污染城市列表</h3>
+  <ul id="aqi-list">
+<!--   
+    <li>第一名：福州（样例），10</li>
+      <li>第二名：福州（样例），10</li> -->
+  </ul>
+
+<script type="text/javascript">
+
+var aqiData = [
+  ["北京", 90],
+  ["上海", 50],
+  ["福州", 10],
+  ["广州", 70],
+  ["成都", 90],
+  ["西安", 100]
+];
+
+(function () {
+  /****************获得大于60的数组**************/
+  /**方法一：
+   **var over60 = [];
+   **for(var i=0,len=aqiData.length; i<len; i++){
+   ** if(aqiData[i][1] >= 60){
+   **   over60.push(aqiData[i]);
+   **} 
+   **}
+   **/
+  /************方法二*********/
+  var over60 = aqiData.filter(function(item, index, array){
+    return (array[index][1] > 60);
+  });
+
+  /**************对大于60的数组排序********************/
+  over60.sort(function(value1, value2){
+    return value2[1]-value1[1];
+  });
+
+/****************创建子节点(其他方法？)*******************/
+  var newNodeGro = [];
+  for(var i=0, len=over60.length; i<len; i++){
+    newNodeGro.push("<li>第 "+ (i+1) + " 名：" + over60[i] + "</li>")
+  }
+/**************将子节点添加到文档****************/
+  var aqiList = document.getElementById("aqi-list");
+  var newNode = newNodeGro.join("");
+  aqiList.innerHTML = newNode;
+})();
+
+</script>
+</body>
+</html>

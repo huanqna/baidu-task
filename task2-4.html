@@ -1,0 +1,117 @@
+<DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>task2-4</title>
+        <style type="text/css">
+            body{
+                margin-top:0;
+            }
+
+            .newNode,
+            button{
+                padding:2px 10px;
+                margin:15px;
+            }
+            .textGroup{
+                margin:30px 20px;
+                text-align:left;
+            }
+            .newNode{
+                background:rgba(151, 5, 5, 0.733);
+                display:inline-block;
+                color:white;
+            }
+            .container{
+                background:rgba(228, 162, 162, 0.438);
+                margin:100px auto; 
+                padding:100px 50px;
+                width:500px;
+                text-align:center;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <form>
+                <label for="inputText">请输入文本：</label><input type="text" id="inputText" placeholder="请输入1-8位数" minlength="1" maxlength="8"></br>
+            </form>
+                    <button id="btn1">左侧入</button>
+                    <button id="btn2">右侧入</button>
+                    <button id="btn3">左侧出</button>
+                    <button id="btn4">右侧出</button>
+                <div class="textGroup" id="showText"></div>
+        </div>
+
+        <script type="text/javascript">
+            var btn1 = document.getElementById("btn1");
+            var btn2 = document.getElementById("btn2");
+            var btn3 = document.getElementById("btn3");
+            var btn4 = document.getElementById("btn4");
+
+
+/****************方法一*******************************
+
+            function createNewNode(){
+                var inputText = document.getElementById("inputText").value;                
+                if(inputText != ""){
+                    var newNode = document.createElement("span");
+                    newNode.className = "newNode";
+                    var newText = document.createTextNode(inputText);
+                    newNode.appendChild(newText);
+                }
+                return newNode;
+            }
+            btn1.onclick = function(){
+                    var showText = document.getElementById("showText");
+                    showText.insertBefore(createNewNode(), showText.firstChild);
+            };
+            btn2.onclick = function(){
+                    var showText = document.getElementById("showText");
+                    showText.appendChild(createNewNode());
+            };
+            btn3.onclick = function(){
+                var showText = document.getElementById("showText");
+                showText.removeChild(showText.firstChild);
+            };
+            btn4.onclick = function(){
+                var showText = document.getElementById("showText");
+                showText.removeChild(showText.lastChild);
+            };
+****************************************************/
+
+/*********************方法二*************************/
+            function createMethord(methord){
+                /*******创建新节点***********/
+                var inputText = document.getElementById("inputText").value;               
+                if(inputText != ""){
+                    var newNode = document.createElement("span");
+                    newNode.className = "newNode"; 
+                    var newText = document.createTextNode(inputText);
+                    newNode.appendChild(newText);
+                }
+                /*********使用方法************/
+                var showText = document.getElementById("showText");
+                switch(methord){
+                    case "insertBefore":
+                        showText.insertBefore(newNode, showText.firstChild);
+                        break;
+                    case "appendChild":
+                        showText.appendChild(newNode);
+                        break;
+                    case "removeChildLeft":
+                        showText.removeChild(showText.firstChild);
+                        break;
+                    case "removeChildRight":
+                        showText.removeChild(showText.lastChild);
+                        break;
+                }
+            }
+            btn1.onclick = function(){createMethord("insertBefore");};
+            btn2.onclick = function(){createMethord("appendChild");};
+            btn3.onclick = function(){createMethord("removeChildLeft");};
+            btn4.onclick = function(){createMethord("removeChildRight");};
+
+        </script>
+    </body>
+</html>
